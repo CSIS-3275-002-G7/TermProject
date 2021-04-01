@@ -4,10 +4,10 @@ import React, { Component } from 'react';
 class DocSelect extends Component {
     state = {}
 
-    showAppointments(event) {
-        console.log(event);
-        // document.getElementById("appList").className = "d-block";
-    };
+    // showAppointments(event) {
+    //     console.log(event);
+    //     // document.getElementById("appList").className = "d-block";
+    // };
 
     componentDidMount() {
         document.getElementById("docSelect").selectedIndex = -1;
@@ -20,7 +20,7 @@ class DocSelect extends Component {
                     <label className="mr-sm-2" for="docSelect">Doctor</label>
                     <br />
                     <select className="custom-select mr-sm-2 my-2" id="docSelect" name="docSelect"
-                        aria-describedby="docHelp" disabled onChange={this.showAppointments}>
+                        aria-describedby="docHelp" disabled onChange={this.props.onSelect}>
                         <option value="Frank">Frank Kinney</option>
                         <option value="Polly">Polly Walter</option>
                         <option value="Jennie">Jennie Clark</option>

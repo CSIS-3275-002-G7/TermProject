@@ -3,23 +3,17 @@ window.onload = function () {
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth() + 1;
-    var mmPlusOne = today.getMonth() + 2;
     var yyyy = today.getFullYear();
     if (dd < 10) {
         dd = '0' + dd
-    }
+    };
     if (mm < 10) {
         mm = '0' + mm
-    }
-    if (mmPlusOne < 10) {
-        mmPlusOne = '0' + mmPlusOne
-    }
+    };
+
 
     today = yyyy + '-' + mm + '-' + dd;
-    plusMonth = yyyy + '-' + mmPlusOne + '-' + dd;
-
-    document.getElementById("date").setAttribute("min", today);
-    document.getElementById("date").setAttribute("max", plusMonth);
+    document.getElementById("appDate").setAttribute("min", today);
 };
 
 

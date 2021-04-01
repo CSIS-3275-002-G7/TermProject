@@ -9,11 +9,24 @@ class App extends Component {
         appointments: appointments,
         docSelect: ''
     }
+
+    onDocSelect = (event) => {
+        //console.log(event.target.value);
+        this.setState({ docSelect: event.target.value });
+        document.getElementById("h3-app").className = "d-block";
+        document.getElementById("bookSpotList").className = "d-block";
+
+
+    };
+
     render() {
+        const filteredAppointments = this.state.appointments.filter(app => {
+            return app.name.includes(this.state.docSelect);
+        });
         return (
             <div>
-                <DocSelect />
-                <BookSpotList appointments={this.state.appointments} />
+                <DocSelect onSelect={this.onDocSelect} />
+                <BookSpotList appointments={filteredAppointments} />
             </div>);
     }
 }
