@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import BookSpot from './BookSpot';
 
 const BookSpotList = ({ appointments }) => {
