@@ -4,8 +4,8 @@ import BookSpot from './BookSpot';
 const BookSpotList = ({ appointments }) => {
     const BookSpotArray = appointments.map((app, i) => {
         return (<BookSpot
-            key={appointments[i].id}
-            id={appointments[i].id}
+            key={appointments[i].appointmentId}
+            id={appointments[i].appointmentId}
             time={appointments[i].time} />);
     });
     return (
