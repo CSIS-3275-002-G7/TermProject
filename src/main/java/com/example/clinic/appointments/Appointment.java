@@ -3,7 +3,7 @@ package com.example.clinic.appointments;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "appointments")
-public class TestClass {
+public class Appointment {
     private Integer appointmentId;
     private String name;
     private String time;

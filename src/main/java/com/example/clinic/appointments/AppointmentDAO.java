@@ -6,18 +6,18 @@ import org.springframework.stereotype.Component;
 import java.util.Collection;
 
 @Component
-public class TestDAO {
+public class AppointmentDAO {
 
     @Autowired
-    private AppointmentRepository repository;
+    private AppointmentRepository appointmentRepository;
 
 
-    public Collection<Appointment> getTestObjects() {
-        return repository.findAll();
+    public Collection<Appointment> getAppointments() {
+        return appointmentRepository.findAll();
     }
 
 
-    public Appointment createTestObject(Appointment testObject) {
-        return repository.insert(testObject);
+    public Appointment createAppointment(Appointment appointment) {
+        return appointmentRepository.insert(appointment);
     }
 }

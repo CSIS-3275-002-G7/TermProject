@@ -13,12 +13,12 @@ public class AppointmentController {
     private AppointmentService testService;
 
     @GetMapping
-    public Collection<Appointment> getTestObjects() {
-        return testService.getTestObjects();
+    public Collection<Appointment> getAppointments() {
+        return testService.getAppointments();
     }
 
     @PostMapping
-    public Appointment postTestObject(@RequestBody Appointment testObject) {
-        return testService.createTestObject(testObject);
+    public Appointment postAppointment(@RequestBody Appointment appointment) {
+        return testService.createAppointment(appointment);
     }
 }
