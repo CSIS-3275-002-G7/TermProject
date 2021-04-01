@@ -1,29 +1,34 @@
-import logo from './logo.svg';
-import React from 'react';
-import './App.css';
+import React, { Component } from 'react';
+import BookSpotList from './BookSpotList';
+import DocSelect from './DocSelect'
+import { appointments } from './Appointments';
 
-function App() {
-  const [testingValue, setTestingValue] = React.useState("Loading from db...");
 
-  React.useEffect(function() {
-    fetch("http://localhost:8080/test")
-      .then(response => response.json())
-      .then(function(data) {
-        setTestingValue(data[0].keyInAtlas)
-      })
-      .catch(console.warn)
-  });
+class App extends Component {
+    state = {
+        appointments: appointments,
+        docSelect: ''
+    }
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <br />
-        <div>Value Below comes from mongo atlas cloud database:</div>
-        <div>{testingValue}</div>
-      </header>
-    </div>
-  );
+    onDocSelect = (event) => {
+        //console.log(event.target.value);
+        this.setState({ docSelect: event.target.value });
+        document.getElementById("h3-app").className = "d-block";
+        document.getElementById("bookSpotList").className = "d-block";
+
+
+    };
+
+    render() {
+        const filteredAppointments = this.state.appointments.filter(app => {
+            return app.name.includes(this.state.docSelect);
+        });
+        return (
+            <div>
+                <DocSelect onSelect={this.onDocSelect} />
+                <BookSpotList appointments={filteredAppointments} />
+            </div>);
+    }
 }
 
 export default App;
