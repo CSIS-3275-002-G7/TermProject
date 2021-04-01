@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
-import BookSpotList from './BookSpotList';
-import { appointments } from './Appointments';
+import App from './App'
+
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <BookSpotList appointments={appointments} />
+    <App />
   </React.StrictMode>,
-  document.getElementById('bookSpot')
+  document.getElementById('react')
 );
 
 // If you want to start measuring performance in your app, pass a function

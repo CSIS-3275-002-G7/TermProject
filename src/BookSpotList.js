@@ -10,7 +10,8 @@ const BookSpotList = ({ appointments }) => {
     });
     return (
         <div>
-            {BookSpotArray}
+            <h3 id="h3-app" className="d-none">Available appointments: </h3>
+            <div id="bookSpotList" className="d-none">{BookSpotArray}</div>
         </div>
 
     );

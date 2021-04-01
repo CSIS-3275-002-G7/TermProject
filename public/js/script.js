@@ -3,27 +3,21 @@ window.onload = function () {
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth() + 1;
-    var mmPlusOne = today.getMonth() + 2;
     var yyyy = today.getFullYear();
     if (dd < 10) {
         dd = '0' + dd
-    }
+    };
     if (mm < 10) {
         mm = '0' + mm
-    }
-    if (mmPlusOne < 10) {
-        mmPlusOne = '0' + mmPlusOne
-    }
+    };
+
 
     today = yyyy + '-' + mm + '-' + dd;
-    plusMonth = yyyy + '-' + mmPlusOne + '-' + dd;
-
     document.getElementById("appDate").setAttribute("min", today);
-    document.getElementById("appDate").setAttribute("max", plusMonth);
-
-
 };
-document.getElementById("docSelect").selectedIndex = -1;
+
+
+
 
 
 const validate = (form) => {
@@ -91,7 +85,5 @@ validateDoc = (form) => {
 };
 
 
-function showAppointments() {
-    document.getElementById("bookSpotContainer").className = "d-block";
-}
+
 
