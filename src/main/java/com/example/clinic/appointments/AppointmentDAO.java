@@ -1,4 +1,4 @@
-package com.example.clinic.initialTest;
+package com.example.clinic.appointments;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -9,15 +9,15 @@ import java.util.Collection;
 public class TestDAO {
 
     @Autowired
-    private TestRepository repository;
+    private AppointmentRepository repository;
 
 
-    public Collection<TestClass> getTestObjects() {
+    public Collection<Appointment> getTestObjects() {
         return repository.findAll();
     }
 
 
-    public TestClass createTestObject(TestClass testObject) {
+    public Appointment createTestObject(Appointment testObject) {
         return repository.insert(testObject);
     }
 }

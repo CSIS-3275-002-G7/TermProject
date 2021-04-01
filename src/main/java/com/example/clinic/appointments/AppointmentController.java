@@ -1,4 +1,4 @@
-package com.example.clinic.initialTest;
+package com.example.clinic.appointments;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -6,19 +6,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 
 @RestController
-@RequestMapping("/test")
-public class TestController {
+@RequestMapping("/appointments")
+public class AppointmentController {
 
     @Autowired
-    private TestService testService;
+    private AppointmentService testService;
 
     @GetMapping
-    public Collection<TestClass> getTestObjects() {
+    public Collection<Appointment> getTestObjects() {
         return testService.getTestObjects();
     }
 
     @PostMapping
-    public TestClass postTestObject(@RequestBody TestClass testObject) {
+    public Appointment postTestObject(@RequestBody Appointment testObject) {
         return testService.createTestObject(testObject);
     }
 }
