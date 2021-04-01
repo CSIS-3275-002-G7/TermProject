@@ -18,12 +18,12 @@ window.onload = function () {
     today = yyyy + '-' + mm + '-' + dd;
     plusMonth = yyyy + '-' + mmPlusOne + '-' + dd;
 
-    document.getElementById("appDate").setAttribute("min", today);
-    document.getElementById("appDate").setAttribute("max", plusMonth);
-
-
+    document.getElementById("date").setAttribute("min", today);
+    document.getElementById("date").setAttribute("max", plusMonth);
 };
-document.getElementById("docSelect").selectedIndex = -1;
+
+
+
 
 
 const validate = (form) => {
@@ -91,7 +91,5 @@ validateDoc = (form) => {
 };
 
 
-function showAppointments() {
-    document.getElementById("bookSpotContainer").className = "d-block";
-}
+
 

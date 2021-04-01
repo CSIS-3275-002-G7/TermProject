@@ -10,6 +10,7 @@ const BookSpotList = ({ appointments }) => {
     });
     return (
         <div>
+            <h3>Available appointments: </h3>
             {BookSpotArray}
         </div>
 

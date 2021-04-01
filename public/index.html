@@ -97,11 +97,9 @@
 
     <section id="book" class="">
         <div class="row d-flex flex-wrap">
-            <div class="col-6 book-img">
-            </div>
+            <div class="col-6 book-img"></div>
             <div class="col-6 form px-5 py-5">
                 <h2>Book an appointment with one of our doctors</h2>
-
                 <form action="" method="get">
                     <div class="mb-3">
                         <label for="inputEmail" class="form-label">Email address</label>
@@ -119,41 +117,27 @@
 
                     <div class="mb-3">
                         <label for="appDate" class="form-label">Appointment date</label>
-                        <input type="date" name="date" min="2021-03-30" max="2021-04-30" class="form-control"
-                            id="appDate" aria-describedby="dateHelp" onchange="docEnable()" required>
+                        <input type="date" name="date" min="2021-03-30" max="2021-04-30" class="form-control" id="date"
+                            aria-describedby="dateHelp" onchange="docEnable()" required>
                         <div id="dateHelp" class="form-text">Please select preferrable appointment date to see available
                             spots</div>
                     </div>
 
-                    <div class="col-auto my-1">
-                        <label class="mr-sm-2" for="inlineFormCustomSelect">Doctor</label>
-                        <br>
-                        <select class="custom-select mr-sm-2 my-2" id="docSelect" name="docSelect"
-                            aria-describedby="docHelp" disabled onchange="showAppointments();">
-                            <option value="Frank">Frank Kinney</option>
-                            <option value="Polly">Polly Walter</option>
-                            <option value="Jennie">Jennie Clark</option>
-                            <option value="Elmer">Elmer Briggs</option>
-                        </select>
-                        <div id="docHelp" class="form-text">Please choose a doctor to view the schedule for selected
-                            date</div>
+                    <div id="react"></div>
 
-                        <div id="bookSpotContainer" class="d-none">
-                            <div id="bookSpot" class="text-white mr-auto"></div>
-                        </div>
-                        <br>
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
-                            <label class="form-check-label" for="exampleCheck1">I hereby consent to the processing of
-                                the personal data that I provided</label>
-                        </div>
+                    <div id="bookSpotContainer" class="d-none">
+                        <div id="bookSpot" class="text-white mr-auto"></div>
+                    </div>
 
-                        <input type="submit" value="Submit" class="btn btn-primary" onclick="validate(this.form)">
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                        <label class="form-check-label" for="exampleCheck1">I consent to processing of
+                            the personal data </label>
+                    </div>
+
+                    <input type="submit" value="Submit" class="btn btn-primary" onclick="validate(this.form)">
                 </form>
-
             </div>
-
-
         </div>
     </section>
 
@@ -202,7 +186,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
         crossorigin="anonymous"></script>
-    <script src="js/script.js"></script>ip
+    <script src="js/script.js"></script>
 </body>
 
 </html>
