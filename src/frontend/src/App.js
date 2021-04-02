@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
 import BookSpotList from './BookSpotList';
 import DocSelect from './DocSelect'
-import { appointments } from './Appointments';
 
 
 class App extends Component {
     state = {
-        appointments: appointments,
+        appointments: [],
         docSelect: ''
+    }
+    
+    componentDidMount() {
+        fetch("http://localhost:8080/appointments")
+            .then(response => response.json())
+            .then(data => {
+                this.setState({
+                    appointments: data
+                })
+            })
+            .catch(console.warn);
     }
 
     onDocSelect = (event) => {
