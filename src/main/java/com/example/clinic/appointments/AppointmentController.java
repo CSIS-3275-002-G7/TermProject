@@ -27,8 +27,8 @@ public class AppointmentController {
         return appointmentService.getAppointments();
     }
 
-    @PostMapping
-    public Appointment postAppointment(@RequestBody Appointment appointment) {
-        return appointmentService.createAppointment(appointment);
-    }
+//    @PostMapping
+//    public Appointment postAppointment(@RequestBody Appointment appointment) {
+//        return appointmentService.createAppointment(appointment);
+//    }
 }
