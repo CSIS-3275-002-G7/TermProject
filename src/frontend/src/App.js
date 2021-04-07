@@ -51,6 +51,15 @@ class App extends Component {
             patientEmail: this.state.patientEmail,
             patientName: this.state.patientName
         })
+        const changeAppointment = this.state.appointments.filter(
+            ({ appointmentId }) => this.state.selectedAppId.includes(appointmentId))[0];
+        axios.put('http://localhost:8080/appointments/' + this.state.selectedAppId, {
+            appointmentId: this.state.selectedAppId,
+            name: changeAppointment.name,
+            date: changeAppointment.date,
+            time: changeAppointment.time,
+            available: false
+        })
     };
 
 
