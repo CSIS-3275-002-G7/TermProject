@@ -97,8 +97,15 @@ class App extends Component {
             return app.name.includes(this.state.docSelect) & app.date.includes(this.state.date);
         })
 
+        const sortedFilteredAppointments = filteredAppointments.slice().sort((a, b) => {
+            const timeA = parseInt(a.time);
+            const timeB = parseInt(b.time);
+            
+            const formattedA = timeA < 6 ? timeA + 12 : timeA;
+            const formattedB = timeB < 6 ? timeB + 12 : timeB;
 
-
+            return formattedA - formattedB;
+        })
 
         return (
             <React.Fragment>
@@ -128,7 +135,7 @@ class App extends Component {
 
                     <DocSelect onSelect={this.onDocSelect} />
                     <BookSpotList
-                        appointments={filteredAppointments}
+                        appointments={sortedFilteredAppointments}
                         selectedAppointment={this.state.appointmentId}
                         setAppointmentId={this.setAppointmentId}
                         // onClick={this.onAppSelected.bind(this)}
