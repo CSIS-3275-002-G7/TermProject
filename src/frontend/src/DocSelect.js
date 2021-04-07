@@ -17,7 +17,7 @@ class DocSelect extends Component {
         return (
             <div>
                 <div className="col-auto my-1">
-                    <label className="mr-sm-2" for="docSelect">Doctor</label>
+                    <label className="mr-sm-2" htmlFor="docSelect">Doctor</label>
                     <br />
                     <select className="custom-select mr-sm-2 my-2" id="docSelect" name="docSelect"
                         aria-describedby="docHelp" disabled onChange={this.props.onSelect}>
