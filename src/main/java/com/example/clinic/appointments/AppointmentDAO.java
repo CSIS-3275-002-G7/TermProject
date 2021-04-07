@@ -13,7 +13,7 @@ public class AppointmentDAO {
 
     public Appointment updateAppointment(Integer appointmentId, Appointment appointment) {
         Appointment foundAppointment = getAppointmentById(appointmentId);
-        if (foundAppointment.getName() == null) return appointment;
+        if (foundAppointment.getName() == null) return foundAppointment;
 
         foundAppointment.setAvailable(appointment.isAvailable());
         appointmentRepository.save(foundAppointment);
