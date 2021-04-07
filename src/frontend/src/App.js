@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import BookSpotList from './BookSpotList';
 import DocSelect from './DocSelect';
+import axios from 'axios';
 
 
 class App extends Component {
-    state = {
-        appointments: [],
-        docSelect: '',
-        date: '',
+    constructor(props) {
+        super(props);
+        this.state = {
+            appointments: [],
+            docSelect: '',
+            date: '',
+            patientEmail: '',
+            patientName: '',
+            selectedAppId: null
+        }
     }
 
     componentDidMount() {
@@ -37,10 +44,18 @@ class App extends Component {
         document.getElementById("bookSpotList").className = "d-block";
     };
 
+    addAppointment = (event) => {
+        event.preventDefault();
+        axios.post('http://localhost:8080/bookings', {
+            appointmentId: 10,
+            patientEmail: this.state.patientEmail,
+            patientName: this.state.patientName
+        })
+    };
 
 
-    addAppointment = (form) => {
-        form.preventDefault();
+//    addAppointment = (form) => {
+//        form.preventDefault();
         // const email = form.elements["email"];
         // const name = form.elements["name"];
         // const appId = 123;
@@ -53,27 +68,27 @@ class App extends Component {
 
 
       
-        async function postData(url = '', data = {}) {
-            const response = await fetch(url, {
-                method: 'POST',
-                mode: 'cors',
-                cache: 'no-cache', 
-                credentials: 'same-origin', 
-                headers: {
-                    'Content-Type': 'application/json'
-                  
-                },
-                redirect: 'follow', 
-                referrerPolicy: 'no-referrer', 
-                body: JSON.stringify(data) 
-            });
-            return response.json(); 
-        }
-        postData('http://localhost:8080/bookings', { patientName: "Kos", patientEmail: "email@gmail.com", appointmentId: 638 })
-            .then(data => {
-                console.log(data); 
-            });
-    }
+//        async function postData(url = '', data = {}) {
+//            const response = await fetch(url, {
+//                method: 'POST',
+//                mode: 'cors',
+//                cache: 'no-cache',
+//                credentials: 'same-origin',
+//                headers: {
+//                    'Content-Type': 'application/json'
+//
+//                },
+//                redirect: 'follow',
+//                referrerPolicy: 'no-referrer',
+//                body: JSON.stringify(data)
+//            });
+//            return response.json();
+//        }
+//        postData('http://localhost:8080/bookings', { patientName: "Kos", patientEmail: "email@gmail.com", appointmentId: 638 })
+//            .then(data => {
+//                console.log(data);
+//            });
+//    }
 
 
 
@@ -94,17 +109,19 @@ class App extends Component {
         return (
             <React.Fragment>
                 <h2>Book an appointment with one of our doctors</h2>
-                <form action="" method="">
+                <form onSubmit={(e)=>this.addAppointment(e)}>
                     <div className="mb-3">
                         <label htmlFor="inputEmail" className="form-label">Email address</label>
-                        <input type="email" name="email" className="form-control" id="inputEmail"
+                        <input type="email" name="email" value={this.state.patientEmail} onChange={(e)=>this.setState({patientEmail: e.target.value})}
+                        className="form-control" id="inputEmail"
                             aria-describedby="emailHelp" required />
                         <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                     </div>
 
                     <div className="mb-3">
                         <label htmlFor="inputName" className="form-label">Patient Name</label>
-                        <input type="text" name="name" className="form-control" id="inputName" aria-describedby="nameHelp"
+                        <input type="text" name="name" value={this.state.patientName} onChange={(e)=>this.setState({patientName: e.target.value})}
+                        className="form-control" id="inputName" aria-describedby="nameHelp"
                             required />
                         <div id="nameHelp" className="form-text">Please enter your legal First and Last name</div>
                     </div>
@@ -130,7 +147,7 @@ class App extends Component {
                                 the personal data </label>
                     </div>
 
-                    <button className="btn btn-primary" onClick={this.addAppointment} >Submit</button>
+                    <button className="btn btn-primary" >Submit</button>
                 </form>
 
 
