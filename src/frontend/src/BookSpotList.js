@@ -6,7 +6,8 @@ const BookSpotList = ({ appointments }) => {
         return (<BookSpot
             key={appointments[i].appointmentId}
             id={appointments[i].appointmentId}
-            time={appointments[i].time} />);
+            time={appointments[i].time}
+            date={appointments[i].date} />);
     });
     return (
         <div>

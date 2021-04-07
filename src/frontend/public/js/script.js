@@ -69,10 +69,6 @@ validateDate = (form) => {
     }
 };
 
-function docEnable() {
-    document.getElementById("docSelect").disabled = false;
-}
-
 
 validateDoc = (form) => {
     const doc = form.elements["docSelect"];
