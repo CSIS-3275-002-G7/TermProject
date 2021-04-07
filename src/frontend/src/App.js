@@ -8,6 +8,7 @@ class App extends Component {
         appointments: [],
         docSelect: '',
         date: '',
+        appointmentId: ''
     }
 
     componentDidMount() {
@@ -31,12 +32,29 @@ class App extends Component {
     };
 
     onDocSelect = (event) => {
-        //console.log(event.target.value);
+
         this.setState({ docSelect: event.target.value });
         document.getElementById("h3-app").className = "d-block";
         document.getElementById("bookSpotList").className = "d-block";
     };
 
+
+    onAppSelected = () => {
+        this.setState({ appointmentId: this.props.id });
+        console.log(this.state.appointmentId);
+        // this.setState({ appointmentId: this.props.id });
+        // console.log(this.state.appointmentId);
+        var divs = document.querySelectorAll('.appointmentTime');
+        for (var i = 0; i < divs.length; i++) {
+            divs[i].addEventListener('click', function () {
+                for (var j = 0; j < divs.length; j++) {
+                    divs[j].classList.remove('bg-success');
+                }
+                this.classList.add('bg-success');
+                return false;
+            });
+        }
+    }
 
 
     addAppointment = (form) => {
@@ -52,26 +70,26 @@ class App extends Component {
 
 
 
-      
+
         async function postData(url = '', data = {}) {
             const response = await fetch(url, {
                 method: 'POST',
                 mode: 'cors',
-                cache: 'no-cache', 
-                credentials: 'same-origin', 
+                cache: 'no-cache',
+                credentials: 'same-origin',
                 headers: {
                     'Content-Type': 'application/json'
-                  
+
                 },
-                redirect: 'follow', 
-                referrerPolicy: 'no-referrer', 
-                body: JSON.stringify(data) 
+                redirect: 'follow',
+                referrerPolicy: 'no-referrer',
+                body: JSON.stringify(data)
             });
-            return response.json(); 
+            return response.json();
         }
         postData('http://localhost:8080/bookings', { patientName: "Kos", patientEmail: "email@gmail.com", appointmentId: 638 })
             .then(data => {
-                console.log(data); 
+                console.log(data);
             });
     }
 
@@ -118,7 +136,7 @@ class App extends Component {
                     </div>
 
                     <DocSelect onSelect={this.onDocSelect} />
-                    <BookSpotList appointments={filteredAppointments} />
+                    <BookSpotList appointments={filteredAppointments} onClick={this.onAppSelected.bind(this)} />
 
                     {/* <div id="bookSpotContainer" className="d-none">
                         <div id="bookSpot" className="text-white mr-auto"></div>
