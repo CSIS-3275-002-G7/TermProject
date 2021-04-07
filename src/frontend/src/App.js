@@ -100,8 +100,7 @@ class App extends Component {
 
     render() {
         const filteredAppointments = this.state.appointments.filter(app => {
-            return app.name.includes(this.state.docSelect) & app.date.includes(this.state.date);
-        })
+            return app.name.includes(this.state.docSelect) & app.date.includes(this.state.date) & app.available === true})
 
 
 

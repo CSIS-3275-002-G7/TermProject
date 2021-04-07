@@ -8,15 +8,15 @@ class BookSpotList extends Component {
 
 
 
-
     render() {
-
+        console.log(this.props.appointments);
         const BookSpotArray = this.props.appointments.map((app, i) => {
             return (<BookSpot
                 key={this.props.appointments[i].appointmentId}
                 id={this.props.appointments[i].appointmentId}
                 time={this.props.appointments[i].time}
-                date={this.props.appointments[i].date} />);
+                date={this.props.appointments[i].date}
+                available={this.props.appointments[i].available} />);
         });
 
 
