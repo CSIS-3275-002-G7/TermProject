@@ -114,14 +114,14 @@ class App extends Component {
                 <h2>Book an appointment with one of our doctors</h2>
                 <form action="" method="">
                     <div className="mb-3">
-                        <label for="inputEmail" className="form-label">Email address</label>
+                        <label htmlFor="inputEmail" className="form-label">Email address</label>
                         <input type="email" name="email" className="form-control" id="inputEmail"
                             aria-describedby="emailHelp" required />
                         <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                     </div>
 
                     <div className="mb-3">
-                        <label for="inputName" className="form-label">Patient Name</label>
+                        <label htmlFor="inputName" className="form-label">Patient Name</label>
                         <input type="text" name="name" className="form-control" id="inputName" aria-describedby="nameHelp"
                             required />
                         <div id="nameHelp" className="form-text">Please enter your legal First and Last name</div>
@@ -144,7 +144,7 @@ class App extends Component {
 
                     <div className="mb-3 form-check">
                         <input type="checkbox" className="form-check-input" id="exampleCheck1" required />
-                        <label className="form-check-label" for="exampleCheck1">I consent to processing of
+                        <label className="form-check-label" htmlFor="exampleCheck1">I consent to processing of
                                 the personal data </label>
                     </div>
 
