@@ -8,7 +8,7 @@ class App extends Component {
         appointments: [],
         docSelect: '',
         date: '',
-        appointmentId: ''
+        appointmentId: -1
     }
 
     componentDidMount() {
@@ -23,8 +23,9 @@ class App extends Component {
     }
 
     docEnableAndTime = (event) => {
+        console.log("jappen")
         document.getElementById("docSelect").disabled = false;
-        this.setState({ date: event.target.value });
+        this.setState({ date: event.target.value, appointmentId: -1 });
         if (this.state.docSelect) {
             document.getElementById("h3-app").className = "d-block";
             document.getElementById("bookSpotList").className = "d-block";
@@ -32,29 +33,27 @@ class App extends Component {
     };
 
     onDocSelect = (event) => {
-
-        this.setState({ docSelect: event.target.value });
+        this.setState({ docSelect: event.target.value, appointmentId: -1 });
         document.getElementById("h3-app").className = "d-block";
         document.getElementById("bookSpotList").className = "d-block";
     };
-
-
-    onAppSelected = () => {
-        this.setState({ appointmentId: this.props.id });
-        console.log(this.state.appointmentId);
-        // this.setState({ appointmentId: this.props.id });
-        // console.log(this.state.appointmentId);
-        var divs = document.querySelectorAll('.appointmentTime');
-        for (var i = 0; i < divs.length; i++) {
-            divs[i].addEventListener('click', function () {
-                for (var j = 0; j < divs.length; j++) {
-                    divs[j].classList.remove('bg-success');
-                }
-                this.classList.add('bg-success');
-                return false;
-            });
-        }
+    
+    setAppointmentId = (appointmentId) => {
+        this.setState({ appointmentId: appointmentId });
     }
+
+    // onAppSelected = () => {
+    //     var divs = document.querySelectorAll('.appointmentTime');
+    //     for (var i = 0; i < divs.length; i++) {
+    //         divs[i].addEventListener('click', function () {
+    //             for (var j = 0; j < divs.length; j++) {
+    //                 divs[j].classList.remove('bg-success');
+    //             }
+    //             this.classList.add('bg-success');
+    //             return false;
+    //         });
+    //     }
+    // }
 
 
     addAppointment = (form) => {
@@ -93,14 +92,6 @@ class App extends Component {
             });
     }
 
-
-
-
-
-
-
-
-
     render() {
         const filteredAppointments = this.state.appointments.filter(app => {
             return app.name.includes(this.state.docSelect) & app.date.includes(this.state.date);
@@ -136,7 +127,12 @@ class App extends Component {
                     </div>
 
                     <DocSelect onSelect={this.onDocSelect} />
-                    <BookSpotList appointments={filteredAppointments} onClick={this.onAppSelected.bind(this)} />
+                    <BookSpotList
+                        appointments={filteredAppointments}
+                        selectedAppointment={this.state.appointmentId}
+                        setAppointmentId={this.setAppointmentId}
+                        // onClick={this.onAppSelected.bind(this)}
+                    />
 
                     {/* <div id="bookSpotContainer" className="d-none">
                         <div id="bookSpot" className="text-white mr-auto"></div>
