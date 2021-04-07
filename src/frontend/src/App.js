@@ -47,7 +47,7 @@ class App extends Component {
     addAppointment = (event) => {
         event.preventDefault();
         axios.post('http://localhost:8080/bookings', {
-            appointmentId: 10,
+            appointmentId: this.state.selectedAppId,
             patientEmail: this.state.patientEmail,
             patientName: this.state.patientName
         })
@@ -90,14 +90,6 @@ class App extends Component {
 //            });
 //    }
 
-
-
-
-
-
-
-
-
     render() {
         const filteredAppointments = this.state.appointments.filter(app => {
             return app.name.includes(this.state.docSelect) & app.date.includes(this.state.date) & app.available === true})
@@ -134,7 +126,7 @@ class App extends Component {
                     </div>
 
                     <DocSelect onSelect={this.onDocSelect} />
-                    <BookSpotList appointments={filteredAppointments} />
+                    <BookSpotList onSelect={(value) => this.setState({ selectedAppId: value })} appointments={filteredAppointments} />
 
                     {/* <div id="bookSpotContainer" className="d-none">
                         <div id="bookSpot" className="text-white mr-auto"></div>
