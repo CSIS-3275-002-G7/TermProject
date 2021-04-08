@@ -19,7 +19,10 @@ class BookSpotList extends Component {
                 id={this.props.appointments[i].appointmentId}
                 time={this.props.appointments[i].time}
                 date={this.props.appointments[i].date}
-                onClick={this.props.onClick.bind(this)}
+                // onClick={this.props.onClick.bind(this)}
+                selectedAppointment={this.props.selectedAppointment}
+                setAppointmentId={this.props.setAppointmentId}
+                setTime={this.props.setTime}
 
             />);
         });

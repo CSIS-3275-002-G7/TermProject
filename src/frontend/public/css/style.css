@@ -51,7 +51,8 @@ h2 {
 }
 
 h3 {
-    color: rgb(45, 159, 233);
+    color: rgb(0, 104, 173);
+    text-align: center;
 }
 
 #doctors {
@@ -90,6 +91,7 @@ h3 {
     width: 50%;
     background: url(../img/book.jpg) center center;
     background-size: cover;
+    min-height: 850px;
 }
 
 #book  {
