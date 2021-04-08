@@ -21,6 +21,15 @@ class App extends Component {
                 })
             })
             .catch(console.warn);
+
+        fetch("http://localhost:8080/bookings")
+            .then(response => response.json())
+            .then(data => {
+                this.setState({
+                    bookedAppointments: data
+                })
+            })
+            .catch(console.warn);
     }
 
     docEnableAndTime = (event) => {
@@ -84,6 +93,8 @@ class App extends Component {
             case 'Jennie':
                 docName = 'Jennie Clark'
                 break;
+            default:
+                docName = null;
         }
 
         document.getElementById("patient-name").innerText = name;
