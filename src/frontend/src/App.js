@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BookSpotList from './BookSpotList';
+import BookedSpotList from './BookedSpotList';
 import DocSelect from './DocSelect';
 import axios from 'axios';
 
@@ -9,6 +10,7 @@ class App extends Component {
         super(props);
         this.state = {
             appointments: [],
+            bookedAppointments: [],
             docSelect: '',
             date: '',
             patientEmail: '',
@@ -23,6 +25,15 @@ class App extends Component {
             .then(data => {
                 this.setState({
                     appointments: data
+                })
+            })
+            .catch(console.warn);
+
+        fetch("http://localhost:8080/bookings")
+            .then(response => response.json())
+            .then(data => {
+                this.setState({
+                    bookedAppointments: data
                 })
             })
             .catch(console.warn);
@@ -59,6 +70,9 @@ class App extends Component {
             date: changeAppointment.date,
             time: changeAppointment.time,
             available: false
+        })
+        .then(() => {
+            this.componentDidMount();
         })
     };
 
@@ -101,10 +115,7 @@ class App extends Component {
 
     render() {
         const filteredAppointments = this.state.appointments.filter(app => {
-            return app.name.includes(this.state.docSelect) & app.date.includes(this.state.date) & app.available === true})
-
-
-
+            return app.name.includes(this.state.docSelect) & app.date.includes(this.state.date) & app.available === true});
 
         return (
             <React.Fragment>
@@ -149,10 +160,9 @@ class App extends Component {
 
                     <button className="btn btn-primary" >Submit</button>
                 </form>
-
-
-
-
+                <BookedSpotList bookedAppointments={this.state.bookedAppointments.map(
+                    x => Object.assign(x, this.state.appointments.find(
+                        y => y.appointmentId === x.appointmentId)))} />
 
             </React.Fragment>
 
