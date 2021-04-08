@@ -39,8 +39,8 @@ class App extends Component {
     };
 
 
-    onAppSelected = () => {
-        this.setState({ appointmentId: this.props.id });
+    onAppSelected = (appId) => {
+        this.setState({ appointmentId: appId });
         console.log(this.state.appointmentId);
         // this.setState({ appointmentId: this.props.id });
         // console.log(this.state.appointmentId);
@@ -51,7 +51,6 @@ class App extends Component {
                     divs[j].classList.remove('bg-success');
                 }
                 this.classList.add('bg-success');
-                return false;
             });
         }
     }
@@ -59,9 +58,11 @@ class App extends Component {
 
     addAppointment = (form) => {
         form.preventDefault();
-        // const email = form.elements["email"];
-        // const name = form.elements["name"];
-        // const appId = 123;
+        //const email = form.elements["email"].value;
+        const formElem = document.getElementById("book-form").elements;
+        const email = formElem["inputEmail"].value;
+        const name = form.elements["inputName"].value;
+        const appId = this.state.appointmentId;
         // const obj = {
         //     patientName: name,
         //     patientEmail: email,
@@ -112,7 +113,7 @@ class App extends Component {
         return (
             <React.Fragment>
                 <h2>Book an appointment with one of our doctors</h2>
-                <form action="" method="">
+                <form action="" method="" id="book-form">
                     <div className="mb-3">
                         <label htmlFor="inputEmail" className="form-label">Email address</label>
                         <input type="email" name="email" className="form-control" id="inputEmail"
@@ -148,7 +149,7 @@ class App extends Component {
                                 the personal data </label>
                     </div>
 
-                    <button className="btn btn-primary" onClick={this.addAppointment} >Submit</button>
+                    <button className="btn btn-primary" onClick={this.addAppointment}>Submit</button>
                 </form>
 
 

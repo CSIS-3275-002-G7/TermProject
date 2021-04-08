@@ -8,7 +8,7 @@ class BookSpot extends Component {
     render() {
         return (
             <React.Fragment>
-                <div role="button" className="bg-blue dib ba br2 pv2 ph3 ma1 grow text-white appointmentTime" onClick={this.props.onClick}>{this.props.time}</div>
+                <div role="button" className="bg-blue dib ba br2 pv2 ph3 ma1 grow text-white appointmentTime" onClick={this.props.onClick(this.props.id)}>{this.props.time}</div>
             </React.Fragment>
         );
 
