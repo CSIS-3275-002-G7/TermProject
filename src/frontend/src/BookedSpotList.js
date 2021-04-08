@@ -33,16 +33,6 @@ class BookedSpotList extends Component {
     }
 
     render() {
-        // const bookedSpotArray =  this.state.joinedAppointments.map((app) => {
-        //     return (<BookedSpot
-        //         key={app.appointmentId}
-        //         id={app.appointmentId}
-        //         patientName={app.patientName}
-        //         patientEmail={app.patientEmail}
-        //         doctorName={app.name}
-        //         time={app.time}
-        //         date={app.date} />);
-        // });
         const bookedSpotArray = this.state.bookedAppointments.map(
             x => Object.assign(x, this.state.appointments.find(
                 y => y.appointmentId === x.appointmentId))).map((app) => {

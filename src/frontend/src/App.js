@@ -197,7 +197,7 @@ class App extends Component {
                 </div>
 
                 <div id="booking-details" className="d-none">
-                    <h2>Your appointments is booked!</h2>
+                    <h2>Your appointment is booked!</h2>
                     <br />
                     <h3>Thank you for booking your visit with us</h3>
                     <h3>Below is your booking confirmation</h3>
