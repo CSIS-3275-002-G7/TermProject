@@ -4,22 +4,27 @@ import 'tachyons';
 
 
 class BookSpot extends Component {
-    state = {}
 
-    selectedAppTime = (event) => {
-        this.setState({ time: event.target.innerText })
-        this.setState({ selectedId: this.props.id })
+    onClick = () => {
+        this.props.setAppointmentId(this.props.id);
+        this.props.setTime(this.props.time);
+        // this.props.onClick()
     }
 
+    getBackGroundColour = () => {
+        if (this.props.id === this.props.selectedAppointment)
+            return "bg-success"
+        return "bg-blue"
+    }
 
     render() {
-
-
         return (
             <React.Fragment>
-                <div role="button" id={this.props.id} className="bg-blue dib ba br2 pv2 ph3 ma1 grow text-white appointmentTime" onClick={this.selectedAppTime}>{this.props.time}</div>
+                <div role="button" className={this.getBackGroundColour() + " dib ba br2 pv2 ph3 ma1 grow text-white appointmentTime"} onClick={this.onClick}>{this.props.time}</div>
             </React.Fragment>
         );
+
+
     }
 
 }
