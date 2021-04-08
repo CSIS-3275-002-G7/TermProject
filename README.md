@@ -1,1 +1,2 @@
-i created this branch to test if i can get the data from mongo cloud atlas database to show up in react through spring boot
+# Medical Clinic Appointment Booking App
+## CSIS 3275 Winter 2021 Group 7
